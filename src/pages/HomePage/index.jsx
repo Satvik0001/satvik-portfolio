@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import { useAudio } from '@hooks/useAudio'
 import useStore from '@stores/useStore'
 import { projects } from '@data/projects'
+import { profile } from '@data/profile'
 import styles from './HomePage.module.css'
 
 function HomePage() {
@@ -244,6 +245,29 @@ function HomePage() {
                 <span key={tech} className={styles.techPill}>{tech}</span>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ========================================================= */}
+        {/* EDUCATION SECTION */}
+        {/* ========================================================= */}
+        <section id="education" className={styles.section}>
+          <div className={styles.sectionHeader}>
+            <div className={styles.sectionBadge}>ACADEMIC BACKGROUND</div>
+            <h2 className={styles.sectionTitle}>Education</h2>
+          </div>
+
+          <div className={styles.educationGrid}>
+            {profile.education.map((edu, idx) => (
+              <div key={idx} className={styles.homeEduCard}>
+                <div className={styles.homeEduHeader}>
+                  <h3 className={styles.homeEduDegree}>{edu.degree}</h3>
+                  <span className={styles.homeEduPeriod}>{edu.period}</span>
+                </div>
+                <p className={styles.homeEduInst}>{edu.institution}</p>
+                <span className={styles.homeEduStatus}>Status: {edu.status}</span>
+              </div>
+            ))}
           </div>
         </section>
 

@@ -101,6 +101,77 @@
   border-radius: var(--radius-full);
 }
 
+/* ---- Education Section ---- */
+.educationSection {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 20px;
+}
+
+.educationHeading {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #38bdf8;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.educationList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.educationCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color var(--transition-fast);
+}
+
+.educationCard:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.eduHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.eduDegree {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.eduPeriod {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.1);
+  border: 1px solid rgba(192, 132, 252, 0.2);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.eduInstitution {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
 /* ---- Skills tab ---- */
 .skillsContent {
   display: flex;

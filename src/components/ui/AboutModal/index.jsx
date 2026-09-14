@@ -51,6 +51,24 @@ function AboutModal({ isOpen, onClose }) {
               <span key={focus} className={styles.focusTag}>{focus}</span>
             ))}
           </div>
+
+          {/* Education Block */}
+          {profile.education && profile.education.length > 0 && (
+            <div className={styles.educationSection}>
+              <h4 className={styles.educationHeading}>Academic Education</h4>
+              <div className={styles.educationList}>
+                {profile.education.map((edu, idx) => (
+                  <div key={idx} className={styles.educationCard}>
+                    <div className={styles.eduHeader}>
+                      <span className={styles.eduDegree}>{edu.degree}</span>
+                      <span className={styles.eduPeriod}>{edu.period}</span>
+                    </div>
+                    <span className={styles.eduInstitution}>{edu.institution}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
 

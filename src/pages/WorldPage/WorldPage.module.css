@@ -15,8 +15,8 @@
 
 .header {
   position: fixed;
-  top: 24px;
-  left: 24px;
+  top: 74px;
+  right: 24px;
   z-index: 50;
   pointer-events: none;
 }
