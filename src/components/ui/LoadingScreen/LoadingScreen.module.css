@@ -1,0 +1,120 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.content {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  width: min(400px, 90vw);
+}
+
+.logoMark {
+  width: 72px;
+  height: 72px;
+  border: 2px solid var(--color-purple-600);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 32px;
+  box-shadow: var(--glow-purple-md);
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+.logoLetter {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--color-purple-400);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 4vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+.role {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--color-purple-400);
+  margin-bottom: 40px;
+}
+
+.loadingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.loadingText {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  min-width: 140px;
+  text-align: left;
+}
+
+.progressNum {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-purple-400);
+}
+
+.progressTrack {
+  height: 3px;
+  background: rgba(124, 58, 237, 0.2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-purple-700), var(--color-purple-400));
+  border-radius: 999px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+}
+
+/* Ambient particles */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--color-purple-500);
+  opacity: 0;
+  animation: particleRise linear infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes particleRise {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(-100vh); opacity: 0; }
+}

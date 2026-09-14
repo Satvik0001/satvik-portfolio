@@ -1,0 +1,57 @@
+.prompt {
+  position: fixed;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  pointer-events: none;
+  animation: promptIn 0.2s ease;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(5, 3, 8, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border-hover);
+  border-radius: var(--radius-full);
+  padding: 10px 18px;
+  box-shadow: var(--glow-purple-sm);
+}
+
+.icon {
+  color: var(--color-purple-400);
+  font-size: 18px;
+  animation: iconPulse 1.5s ease-in-out infinite;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  letter-spacing: 0.05em;
+}
+
+.sublabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+@keyframes promptIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(6px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes iconPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}

@@ -1,0 +1,156 @@
+.tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0;
+}
+
+.tab {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  padding: 8px 16px 12px;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  position: relative;
+}
+
+.tab:hover {
+  color: var(--color-text-primary);
+}
+
+.activeTab {
+  color: var(--color-purple-400);
+}
+
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-purple-500);
+  border-radius: 2px 2px 0 0;
+}
+
+/* ---- About tab ---- */
+.aboutContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.nameBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bigName {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.05em;
+}
+
+.bigRole {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-purple-400);
+  letter-spacing: 0.15em;
+}
+
+.availBadge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #4ade80;
+  letter-spacing: 0.05em;
+  width: fit-content;
+}
+
+.bioText {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.bioText p {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.focusAreas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.focusTag {
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  color: var(--color-purple-300);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 5px 14px;
+  border-radius: var(--radius-full);
+}
+
+/* ---- Skills tab ---- */
+.skillsContent {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.skillCategory {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.categoryName {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skillList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skillItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.skillItem:hover {
+  background: var(--color-surface-1);
+}
+
+.skillName {
+  font-size: 14px;
+  color: var(--color-text-primary);
+}
+
+.skillLevel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}

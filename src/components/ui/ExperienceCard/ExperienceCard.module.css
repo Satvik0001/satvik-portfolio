@@ -1,0 +1,124 @@
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--color-purple-600), var(--color-purple-900));
+  border-radius: 3px 0 0 3px;
+}
+
+.card:hover {
+  border-color: var(--color-border-hover);
+  transform: translateX(4px);
+}
+
+.placeholder {
+  opacity: 0.5;
+  border-style: dashed;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.role {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+
+.company {
+  font-size: 14px;
+  color: var(--color-purple-400);
+  font-weight: 500;
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.duration {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.typeBadge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  color: var(--color-purple-300);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.description {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.responsibilities {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.responsibility {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.responsibility::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--color-purple-500);
+  font-weight: bold;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.techTag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  color: var(--color-purple-400);
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+}

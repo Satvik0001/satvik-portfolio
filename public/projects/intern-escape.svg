@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <!-- Background Office Tile Grid -->
+    <pattern id="officeGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#0b0f19" />
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#17223b" stroke-width="1" />
+    </pattern>
+
+    <!-- Boss Field-of-View Cone (Raycast Vision) -->
+    <radialGradient id="visionCone" cx="0%" cy="50%" r="100%">
+      <stop offset="0%" stop-color="#facc15" stop-opacity="0.75" />
+      <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0.05" />
+    </radialGradient>
+
+    <!-- Exit Door Glow -->
+    <radialGradient id="exitGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Office Floor Floorplan -->
+  <rect width="800" height="450" fill="url(#officeGrid)" />
+
+  <!-- Outer Office Concrete Walls -->
+  <rect x="20" y="20" width="760" height="410" fill="none" stroke="#334155" stroke-width="8" rx="8" />
+
+  <!-- Interior Office Cubicle Partitions & Rooms (Walls) -->
+  <g fill="#1e293b" stroke="#475569" stroke-width="4">
+    <!-- Top Left Breakroom / Supply Closet -->
+    <rect x="24" y="24" width="180" height="130" />
+    <!-- Cubicle Row 1 -->
+    <rect x="260" y="24" width="130" height="110" />
+    <rect x="420" y="24" width="130" height="110" />
+    <!-- Cubicle Row 2 -->
+    <rect x="260" y="190" width="130" height="110" />
+    <rect x="420" y="190" width="130" height="110" />
+    <!-- Bottom Left Manager Office -->
+    <rect x="24" y="260" width="180" height="170" />
+  </g>
+
+  <!-- Office Desks & Computers -->
+  <g fill="#0f172a" stroke="#64748b" stroke-width="2">
+    <!-- Desk in Cubicle 1 -->
+    <rect x="280" y="45" width="80" height="45" rx="3" />
+    <rect x="305" y="55" width="30" height="10" fill="#38bdf8" /> <!-- PC Monitor -->
+    <!-- Desk in Cubicle 2 -->
+    <rect x="440" y="45" width="80" height="45" rx="3" />
+    <rect x="465" y="55" width="30" height="10" fill="#38bdf8" />
+    <!-- Desk in Cubicle 3 -->
+    <rect x="280" y="215" width="80" height="45" rx="3" />
+    <rect x="305" y="225" width="30" height="10" fill="#38bdf8" />
+    <!-- Desk in Cubicle 4 -->
+    <rect x="440" y="215" width="80" height="45" rx="3" />
+    <rect x="465" y="225" width="30" height="10" fill="#38bdf8" />
+  </g>
+
+  <!-- Water Cooler in Corridor -->
+  <circle cx="225" cy="180" r="14" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
+  <text x="225" y="184" fill="#ffffff" font-size="9" font-family="monospace" text-anchor="middle">H2O</text>
+
+  <!-- EXIT DOORWAY (Right Wall) with Emergency Green Glow -->
+  <circle cx="776" cy="245" r="75" fill="url(#exitGlow)" />
+  <rect x="765" y="210" width="25" height="70" fill="#10b981" stroke="#34d399" stroke-width="3" rx="4" />
+  <g fill="#ffffff" font-family="monospace" font-weight="900" font-size="11">
+    <rect x="690" y="225" width="60" height="22" rx="4" fill="#059669" />
+    <text x="720" y="240" text-anchor="middle">EXIT ▶</text>
+  </g>
+
+  <!-- BOSS (Patrolling with Dynamic Raycast FOV Cone) -->
+  <g transform="translate(610, 160)">
+    <!-- 2D FOV Cone (Angular Vision Polygon) -->
+    <!-- Occluded and bouncing along the hallway -->
+    <polygon points="0,0 -240,-90 -260,60" fill="url(#visionCone)" />
+    <!-- Field of View Boundary Outline -->
+    <path d="M 0,0 L -240,-90 Q -270,-15 -260,60 Z" fill="none" stroke="#facc15" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6" />
+
+    <!-- Boss Sprite (Red tie, bald/glasses, angry) -->
+    <circle cx="0" cy="0" r="17" fill="#ef4444" stroke="#dc2626" stroke-width="2.5" />
+    <!-- Shoulders -->
+    <path d="M -14,14 Q 0,22 14,14" fill="none" stroke="#1e293b" stroke-width="8" stroke-linecap="round" />
+    <!-- Red Necktie -->
+    <polygon points="0,5 -4,18 0,22 4,18" fill="#b91c1c" />
+
+    <!-- Alert Bubble over Boss -->
+    <g transform="translate(18, -24)">
+      <rect x="0" y="0" width="24" height="24" rx="12" fill="#facc15" stroke="#b45309" stroke-width="1.5" />
+      <text x="12" y="17" font-family="monospace" font-weight="900" font-size="16" fill="#78350f" text-anchor="middle">?</text>
+    </g>
+  </g>
+
+  <!-- DISTRACTION EVENT (Dropped Coffee Mug creating sound wave) -->
+  <g transform="translate(520, 105)">
+    <!-- Broken mug -->
+    <circle cx="0" cy="0" r="5" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1" />
+    <ellipse cx="6" cy="4" rx="10" ry="6" fill="#78350f" opacity="0.8" /> <!-- coffee spill -->
+    <!-- Expanding Sound Waves -->
+    <circle cx="0" cy="0" r="16" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.8" />
+    <circle cx="0" cy="0" r="30" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.4" stroke-dasharray="3,3" />
+    <text x="12" y="-12" font-family="monospace" font-size="10" font-weight="bold" fill="#38bdf8">*CLATTER!*</text>
+  </g>
+
+  <!-- SNEAKING INTERN (Tiptoeing behind cubicle divider) -->
+  <g transform="translate(405, 148)">
+    <!-- Intern Body (Blue Hoodie, stealthily creeping) -->
+    <circle cx="0" cy="0" r="14" fill="#3b82f6" stroke="#60a5fa" stroke-width="2" />
+    <!-- Hoodie Strings / Head -->
+    <circle cx="0" cy="-2" r="8" fill="#1e3a8a" />
+    <!-- Intern Sneak Footprints trail -->
+    <ellipse cx="-16" cy="8" rx="2" ry="4" fill="#60a5fa" opacity="0.4" />
+    <ellipse cx="-28" cy="14" rx="2" ry="4" fill="#60a5fa" opacity="0.3" />
+
+    <!-- "SHH..." quiet bubble -->
+    <rect x="-42" y="-24" width="34" height="16" rx="4" fill="rgba(15, 23, 42, 0.9)" stroke="#60a5fa" stroke-width="1" />
+    <text x="-25" y="-12" font-family="monospace" font-size="9" fill="#93c5fd" text-anchor="middle">SHH..</text>
+  </g>
+
+  <!-- GAME HUD (Unity Stealth UI) -->
+  <g font-family="monospace" font-size="11" font-weight="bold">
+    <!-- Top Left Status -->
+    <rect x="36" y="32" width="210" height="42" rx="6" fill="rgba(11, 15, 25, 0.9)" stroke="#38bdf8" stroke-width="1" />
+    <text x="48" y="50" fill="#34d399">STATUS: HIDDEN [IN SHADOW]</text>
+    <text x="48" y="64" fill="#94a3b8" font-size="10">TIME: 4:59:42 PM (18s TO 5PM)</text>
+
+    <!-- Top Right Stealth Meter -->
+    <rect x="540" y="32" width="220" height="42" rx="6" fill="rgba(11, 15, 25, 0.9)" stroke="#f59e0b" stroke-width="1" />
+    <text x="552" y="50" fill="#facc15">BOSS SUSPICION: 24% [INVESTIGATING]</text>
+    <!-- Progress Bar -->
+    <rect x="552" y="56" width="196" height="8" rx="4" fill="#1e293b" />
+    <rect x="552" y="56" width="48" height="8" rx="4" fill="#f59e0b" />
+  </g>
+</svg>

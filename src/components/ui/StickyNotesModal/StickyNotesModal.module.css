@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.noteGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.note {
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  position: relative;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pin {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  font-size: 16px;
+}
+
+.yellow {
+  background: #fef08a;
+  color: #713f12;
+}
+
+.purple {
+  background: #e9d5ff;
+  color: #581c87;
+}
+
+.cyan {
+  background: #bae6fd;
+  color: #0c4a6e;
+}
+
+.green {
+  background: #bbf7d0;
+  color: #14532d;
+}
+
+.noteTitle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+}
+
+.noteText {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.noteText strong {
+  font-weight: 700;
+}

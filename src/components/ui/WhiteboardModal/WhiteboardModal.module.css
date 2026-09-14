@@ -1,0 +1,106 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.introBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-purple-400);
+  letter-spacing: 0.15em;
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.subtext {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--color-surface-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cardIcon {
+  font-size: 18px;
+  color: var(--color-purple-400);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.05em;
+}
+
+.list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+.list strong {
+  color: var(--color-purple-300);
+}
+
+.list code {
+  font-family: var(--font-mono);
+  background: rgba(124, 58, 237, 0.15);
+  padding: 2px 5px;
+  border-radius: 4px;
+  color: #c084fc;
+}
+
+.tagGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  color: var(--color-purple-300);
+  padding: 5px 10px;
+  border-radius: var(--radius-full);
+}

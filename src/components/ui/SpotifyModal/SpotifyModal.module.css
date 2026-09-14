@@ -1,0 +1,309 @@
+/* ─── Persistent Overlay (display:none hides it, doesn't unmount the iframe) ─── */
+.persistentOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 3, 8, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeInSp 0.2s ease;
+}
+
+.persistentDialog {
+  background: #0e0b1a;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  width: 100%;
+  max-width: 860px;
+  animation: slideUpSp 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+}
+
+.persistentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+  flex-shrink: 0;
+}
+
+.persistentTitle {
+  font-family: var(--font-display, monospace);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #c084fc;
+}
+
+.persistentClose {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 8px;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.15s ease;
+}
+
+.persistentClose:hover {
+  border-color: #a855f7;
+  color: #ffffff;
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.persistentBody {
+  overflow-y: auto;
+  padding: 24px;
+  flex: 1;
+}
+
+@keyframes fadeInSp {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpSp {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ─── Inner Content ─── */
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  color: var(--text-primary, #f1f5f9);
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: #c084fc;
+  background: rgba(139, 92, 246, 0.12);
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.vinylStatus {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.activeStatus {
+  color: #34d399;
+}
+
+.spinningRecord {
+  display: inline-block;
+  animation: spinRecord 2.5s linear infinite;
+}
+
+@keyframes spinRecord {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Spotify Embed Player Container */
+.playerFrameWrapper {
+  position: relative;
+  background: #0d0b18;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.spotifyFrame {
+  display: block;
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
+/* Custom Input Section */
+.customSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(26, 22, 48, 0.6);
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sectionLabel {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #a78bfa;
+  font-weight: 600;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.urlInput {
+  flex: 1;
+  background: #0d0b18;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+  color: #f8fafc;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.82rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.urlInput:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.25);
+}
+
+.loadBtn {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem 1.1rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s, opacity 0.2s;
+}
+
+.loadBtn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.hint {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+/* Preset Playlists */
+.presetSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.presetGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.6rem;
+}
+
+.presetBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(30, 26, 54, 0.7);
+  border: 1px solid rgba(139, 92, 246, 0.22);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  color: #e2e8f0;
+  font-size: 0.78rem;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.presetBtn:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: #a855f7;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.presetBtn.activePreset {
+  background: rgba(124, 58, 237, 0.35);
+  border-color: #c084fc;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.presetIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* Procedural Audio / Control Bar */
+.bottomControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.builtInTrackBtn,
+.spinToggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  padding: 0.5rem 0.85rem;
+  border-radius: 7px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.builtInTrackBtn:hover,
+.spinToggleBtn:hover {
+  border-color: #a855f7;
+  color: #ffffff;
+}
+
+.activeControl {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: #10b981;
+  color: #34d399;
+}

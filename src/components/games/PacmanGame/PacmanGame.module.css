@@ -1,0 +1,243 @@
+.gameWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  max-width: 100%;
+}
+
+.difficultyRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.diffLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-dim);
+  letter-spacing: 0.1em;
+}
+
+.diffBtn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 12px;
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.diffBtn:hover {
+  border-color: var(--color-border-hover);
+  color: var(--color-text-primary);
+}
+
+.activeDiff {
+  background: rgba(124, 58, 237, 0.35);
+  border-color: #a855f7;
+  color: #f5d0fe;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.powerBadge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: #c084fc;
+  background: rgba(192, 132, 252, 0.18);
+  border: 1px solid #c084fc;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  animation: pulseBadge 0.8s infinite alternate;
+}
+
+@keyframes pulseBadge {
+  from { opacity: 0.7; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1.02); }
+}
+
+.mainPlayArea {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.canvasContainer {
+  position: relative;
+  border: 2px solid var(--color-purple-600);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 0 32px rgba(124, 58, 237, 0.35);
+  background: #05030a;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 68vh;
+  width: auto;
+  height: auto;
+}
+
+/* Retro Hall of Fame Leaderboard */
+.leaderboardCard {
+  width: 190px;
+  background: rgba(14, 10, 24, 0.85);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 14px 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.leadHeader {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #facc15;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 8px;
+  text-align: center;
+}
+
+.leadList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.leadRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.userRank {
+  color: #4ade80;
+  font-weight: 700;
+  background: rgba(74, 222, 128, 0.1);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.leadRank {
+  color: var(--color-text-dim);
+  font-size: 10px;
+  width: 24px;
+}
+
+.leadName {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.leadScore {
+  color: #facc15;
+  font-weight: 700;
+}
+
+.leadFooter {
+  border-top: 1px solid var(--color-border);
+  padding-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-dim);
+  text-align: center;
+}
+
+.controlsHint {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-text-dim);
+  margin-top: 12px;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+/* Touch D-Pad for mobile */
+.dpad {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 14px;
+}
+
+.dpadMiddle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.dpadBtn {
+  width: 48px;
+  height: 48px;
+  background: rgba(124, 58, 237, 0.2);
+  border: 1px solid var(--color-purple-500);
+  color: var(--color-purple-300);
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.dpadBtn:active {
+  background: rgba(124, 58, 237, 0.5);
+  transform: scale(0.95);
+}
+
+.dpadCenter {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #facc15;
+  font-size: 20px;
+}
+
+@media (max-width: 860px) {
+  .mainPlayArea {
+    flex-direction: column;
+    align-items: center;
+  }
+  .leaderboardCard {
+    width: 100%;
+    max-width: 418px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dpad {
+    display: flex;
+  }
+  .controlsHint {
+    display: none;
+  }
+}
