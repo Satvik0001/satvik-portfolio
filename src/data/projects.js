@@ -22,7 +22,7 @@ export const projects = [
     image: `${BASE}projects/orbital-drift.svg`,
     github: 'https://github.com/Satvik0001/orbital-drift-meteor',
     demo: null,
-    year: 2024,
+    year: 2026,
     featured: true,
   },
   {
@@ -44,7 +44,7 @@ export const projects = [
     image: `${BASE}projects/intern-escape.svg`,
     github: 'https://github.com/Satvik0001/intern-boss-escape',
     demo: null,
-    year: 2024,
+    year: 2026,
     featured: true,
   },
   {
@@ -66,7 +66,7 @@ export const projects = [
     image: `${BASE}projects/takeshis-gauntlet.svg`,
     github: 'https://github.com/Satvik0001/takeshis-gauntlet-parkour',
     demo: null,
-    year: 2024,
+    year: 2026,
     featured: true,
   }
 ]
