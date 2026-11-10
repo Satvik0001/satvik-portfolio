@@ -29,15 +29,18 @@ const useStore = create((set, get) => ({
   // ---- Music & Vinyl Turntable ----
   isMusicPlaying: false,
   setIsMusicPlaying: (v) => set({ isMusicPlaying: v }),
-  spotifyEmbedUrl: 'https://www.youtube.com/embed/videoseries?list=PLw-VjHDlEOgs658kAHR_88KZFV-KN-6u3&autoplay=1&mute=0',
+  spotifyEmbedUrl: 'https://www.youtube-nocookie.com/embed/videoseries?list=PLw-VjHDlEOgs658kAHR_88KZFV-KN-6u3&autoplay=1&mute=0&rel=0&modestbranding=1&iv_load_policy=3',
   setSpotifyEmbedUrl: (url) => set({ spotifyEmbedUrl: url }),
 
-  // ---- Onboarding tour ----
+  // ---- Onboarding tour & 3D Robot Guide ----
   tourComplete: false,
+  tourActive: false,
   tourStep: 0,
+  setTourActive: (active) => set({ tourActive: active }),
+  setTourStep: (step) => set({ tourStep: step }),
   completeTour: () => {
     localStorage.setItem('sp-tour-complete', '1')
-    set({ tourComplete: true })
+    set({ tourComplete: true, tourActive: false })
   },
   initTour: () => {
     const done = localStorage.getItem('sp-tour-complete') === '1'

@@ -2,7 +2,7 @@
    GLOBAL CSS — Satvik Prajapati Portfolio
    ============================================ */
 
-/* Import modern fonts */
+/* Import modern fonts — use display=swap for non-blocking render */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=Orbitron:wght@400;600;700;900&display=swap');
 
 /* ---- Custom Properties ---- */
@@ -102,6 +102,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Smoother scroll on iOS */
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -111,6 +113,9 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+  /* Promote body to its own compositing layer for smoother repaints */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* ---- Typography ---- */

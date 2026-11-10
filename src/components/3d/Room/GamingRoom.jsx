@@ -17,12 +17,16 @@ import CityWindow from '../objects/CityWindow'
 import NanoleafPanels from '../objects/NanoleafPanels'
 import DeskAccessories from '../objects/DeskAccessories'
 import Whiteboard from '../objects/Whiteboard'
+import RobotGuide3D from '../objects/RobotGuide3D'
 
 export default function GamingRoom() {
   return (
     <group>
       {/* Lighting Rig */}
       <Lighting />
+
+      {/* Interactive 3D Cute Robot Guide */}
+      <RobotGuide3D />
 
       {/* ========================================================= */}
       {/* ROOM ARCHITECTURE */}

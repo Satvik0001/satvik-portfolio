@@ -16,7 +16,7 @@ export default function Bookshelf() {
 
   return (
     <group
-      position={[-2.3, 1.2, -0.2]}
+      position={[-2.65, 1.2, -0.2]}
       rotation={[0, Math.PI / 2, 0]}
       onClick={handleClick}
       onPointerOver={(e) => {

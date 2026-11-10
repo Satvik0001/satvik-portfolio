@@ -47,7 +47,7 @@ function AboutModal({ isOpen, onClose }) {
           </div>
 
           <div className={styles.focusAreas}>
-            {['Unity', 'C#', 'Gameplay Systems', 'Interactive Experiences'].map((focus) => (
+            {['Unity 3D / 2D', 'C# Systems Architecture', 'WebGL / WASM Conversions', '3rd-Party SDKs (Ads & IAP)', 'Zero-GC Optimization'].map((focus) => (
               <span key={focus} className={styles.focusTag}>{focus}</span>
             ))}
           </div>

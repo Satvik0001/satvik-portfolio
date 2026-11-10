@@ -2,15 +2,17 @@ import React, { Suspense, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import useStore from '@stores/useStore'
 import { useAudio } from '@hooks/useAudio'
+import { isMobileDevice } from '@utils/webgl'
 import GamingRoom from '@components/3d/Room/GamingRoom'
 import CameraController from '@components/3d/Room/CameraController'
 import InteractionPrompt from '@components/ui/InteractionPrompt'
-import RoomTour from '@components/ui/RoomTour'
 import AboutModal from '@components/ui/AboutModal'
 import AchievementModal from '@components/ui/AchievementModal'
 import WhiteboardModal from '@components/ui/WhiteboardModal'
 import StickyNotesModal from '@components/ui/StickyNotesModal'
 import styles from './WorldPage.module.css'
+
+const isMobile = isMobileDevice()
 
 export default function WorldPage() {
   const {
@@ -20,36 +22,51 @@ export default function WorldPage() {
     closeModal,
     qualitySettings,
     setIsMusicPlaying,
+    setTourActive,
+    setTourStep,
   } = useStore()
 
   const { stopBgm } = useAudio()
 
-  // Stop all music when leaving the 3D room
+  // First time visitor: activate Byte's 3D tour after the camera entrance zoom completes
+  useEffect(() => {
+    const done = localStorage.getItem('sp-tour-complete') === '1'
+    if (!done) {
+      const timer = setTimeout(() => {
+        setTourActive(true)
+        setTourStep(0)
+      }, 2100)
+      return () => clearTimeout(timer)
+    }
+  }, [setTourActive, setTourStep])
+
+  // Stop procedural room BGM when leaving the 3D room
   useEffect(() => {
     return () => {
-      // Stop procedural BGM
       stopBgm()
-      // Mark vinyl as stopped so it doesn't spin on re-enter until music starts again
-      setIsMusicPlaying(false)
     }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [stopBgm])
 
   return (
     <div className={styles.worldContainer}>
       {/* Three.js R3F Canvas */}
       <Canvas
         className={styles.canvas}
-        shadows={qualitySettings?.shadows ?? true}
-        dpr={[1, 1.5]}
+        shadows={qualitySettings?.shadows ?? (!isMobile)}
+        frameloop="always"
+        dpr={isMobile ? [1, 1] : [1, Math.min(window.devicePixelRatio, 1.5)]}
         camera={{
           position: [0, 1.75, 2.6],
-          fov: 48,
+          fov: isMobile ? 55 : 48,
           near: 0.1,
-          far: 20,
+          far: 15,
         }}
         gl={{
-          antialias: true,
+          antialias: !isMobile,
           powerPreference: 'high-performance',
+          alpha: false,
+          stencil: false,
+          depth: true,
         }}
       >
         <Suspense fallback={null}>
@@ -67,14 +84,18 @@ export default function WorldPage() {
         </div>
       </header>
 
+      {/* Cinematic Entrance Zoom Vignette & Room Announcement Banner */}
+      <div className={styles.entranceVignette} aria-hidden="true" />
+      <div className={styles.entranceBanner} aria-hidden="true">
+        <span className={styles.entranceLabel}>// ENTERING 3D ENVIRONMENT</span>
+        <h2 className={styles.entranceRoomTitle}>SATVIK&apos;S STUDIO</h2>
+      </div>
+
       {/* Dynamic Interaction Hover Prompt */}
       <InteractionPrompt
         label={hoveredObject}
         visible={!!hoveredObject}
       />
-
-      {/* First-visit onboarding tour */}
-      <RoomTour />
 
       {/* Modals triggered by 3D room objects */}
       <AboutModal

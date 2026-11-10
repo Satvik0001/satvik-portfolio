@@ -1,10 +1,15 @@
 import React, { useEffect, useRef } from 'react'
+import { isMobileDevice } from '@utils/webgl'
 
-const PARTICLE_COUNT = 60
+// Use fewer particles on mobile for better performance
+const PARTICLE_COUNT = isMobileDevice() ? 0 : 40
 
 function ParticleField() {
   const canvasRef = useRef(null)
   const animRef = useRef(null)
+
+  // Don't render anything on mobile — save CPU/battery
+  if (PARTICLE_COUNT === 0) return null
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -23,38 +28,43 @@ function ParticleField() {
     const particles = Array.from({ length: PARTICLE_COUNT }, () => ({
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: (Math.random() - 0.5) * 0.3 - 0.1,
-      size: Math.random() * 2 + 0.5,
-      opacity: Math.random() * 0.5 + 0.1,
+      vx: (Math.random() - 0.5) * 0.25,
+      vy: (Math.random() - 0.5) * 0.25 - 0.08,
+      size: Math.random() * 1.5 + 0.4,
+      opacity: Math.random() * 0.4 + 0.08,
       opacityDir: Math.random() > 0.5 ? 1 : -1,
-      opacitySpeed: Math.random() * 0.005 + 0.002,
+      opacitySpeed: Math.random() * 0.004 + 0.001,
       // Color: purple to lavender range
       hue: 250 + Math.random() * 30,
     }))
 
+    let frameSkip = 0
     const draw = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      frameSkip++
+      // Only draw every other frame — halves CPU usage for canvas particles
+      if (frameSkip % 2 === 0) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      particles.forEach((p) => {
-        // Update
-        p.x += p.vx
-        p.y += p.vy
-        p.opacity += p.opacitySpeed * p.opacityDir
-        if (p.opacity >= 0.6 || p.opacity <= 0.05) p.opacityDir *= -1
+        particles.forEach((p) => {
+          // Update
+          p.x += p.vx
+          p.y += p.vy
+          p.opacity += p.opacitySpeed * p.opacityDir
+          if (p.opacity >= 0.5 || p.opacity <= 0.04) p.opacityDir *= -1
 
-        // Wrap around edges
-        if (p.x < 0) p.x = canvas.width
-        if (p.x > canvas.width) p.x = 0
-        if (p.y < 0) p.y = canvas.height
-        if (p.y > canvas.height) p.y = 0
+          // Wrap around edges
+          if (p.x < 0) p.x = canvas.width
+          if (p.x > canvas.width) p.x = 0
+          if (p.y < 0) p.y = canvas.height
+          if (p.y > canvas.height) p.y = 0
 
-        // Draw
-        ctx.beginPath()
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `hsla(${p.hue}, 60%, 70%, ${p.opacity})`
-        ctx.fill()
-      })
+          // Draw
+          ctx.beginPath()
+          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
+          ctx.fillStyle = `hsla(${p.hue}, 55%, 68%, ${p.opacity})`
+          ctx.fill()
+        })
+      }
 
       animRef.current = requestAnimationFrame(draw)
     }

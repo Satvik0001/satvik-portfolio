@@ -15,9 +15,9 @@
 }
 
 .navContainer {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 12px 24px;
+  padding: 14px 36px;
   display: flex;
   justify-content: space-between;
   align-items: center;

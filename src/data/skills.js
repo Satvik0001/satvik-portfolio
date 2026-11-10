@@ -1,36 +1,41 @@
 // skills.js — Satvik Prajapati's Technical Skill Set
 
 export const skills = {
-  'Game Development': [
+  'Game Development & Systems': [
     { name: 'Unity 3D / 2D', level: 'primary' },
-    { name: 'Gameplay Programming', level: 'primary' },
-    { name: 'Game Mechanics Design', level: 'primary' },
-    { name: 'Physics Systems & Rigidbody', level: 'primary' },
-    { name: 'State Machines (FSM/HSM)', level: 'primary' },
-    { name: 'A* Pathfinding & AI', level: 'secondary' },
-    { name: 'Level Design & Obstacles', level: 'secondary' },
+    { name: 'Gameplay Systems Programming', level: 'primary' },
+    { name: 'Physics & Kinematics (Rigidbody / Math)', level: 'primary' },
+    { name: 'State Machines (FSM / HSM)', level: 'primary' },
+    { name: 'Object Pooling & Zero-GC Systems', level: 'primary' },
+    { name: 'A* Pathfinding & Stealth AI', level: 'secondary' },
+    { name: 'Level Design & Obstacle Mechanics', level: 'secondary' },
     { name: 'Particle Systems & VFX', level: 'secondary' },
   ],
+  'WebGL & Cross-Platform': [
+    { name: 'Unity to WebGL / WASM Conversion', level: 'primary' },
+    { name: 'Browser Memory Heap Optimization', level: 'primary' },
+    { name: 'HTML5 Canvas Embedding & Viewports', level: 'primary' },
+    { name: 'Asset Streaming & Texture Compression', level: 'primary' },
+    { name: 'Cross-Platform Builds (PC, Mobile, Web)', level: 'primary' },
+  ],
+  '3rd-Party SDKs & Monetization': [
+    { name: 'Ad Mediation (Unity Ads, AdMob, AppLovin)', level: 'primary' },
+    { name: 'Rewarded Video & Interstitial Flows', level: 'primary' },
+    { name: 'In-App Purchases (Unity IAP)', level: 'primary' },
+    { name: 'Firebase Analytics & Cloud Saves', level: 'secondary' },
+    { name: 'Crash Reporting & Remote Config', level: 'secondary' },
+  ],
   'UI & UX Design': [
-    { name: 'Game UI & HUD Design', level: 'primary' },
-    { name: 'Responsive Layouts', level: 'primary' },
-    { name: 'Menu Flows & Transitions', level: 'primary' },
-    { name: 'Visual Hierarchy & Typography', level: 'primary' },
-    { name: 'Juice & Screen Polish', level: 'secondary' },
+    { name: 'Game UI & HUD Meter Architecture', level: 'primary' },
+    { name: 'Responsive Canvas Scaling (Mobile/PC)', level: 'primary' },
+    { name: 'Menu State Flows & Transitions', level: 'primary' },
+    { name: 'Visual Hierarchy & Game Juice Polish', level: 'secondary' },
   ],
-  'Programming': [
-    { name: 'C#', level: 'primary' },
-    { name: 'Object-Oriented Programming (OOP)', level: 'primary' },
-    { name: 'Data Structures & Algorithms', level: 'secondary' },
+  'Programming & Core Architecture': [
+    { name: 'C# (Advanced OOP & Clean Architecture)', level: 'primary' },
     { name: 'ScriptableObject Architecture', level: 'primary' },
-    { name: 'Memory & Draw Call Optimization', level: 'secondary' },
-    { name: 'Version Control (Git)', level: 'secondary' },
+    { name: 'CPU/GPU Profiling & Draw Call Batching', level: 'primary' },
+    { name: 'Data Structures & Algorithms', level: 'secondary' },
+    { name: 'Version Control (Git & Agile Sprints)', level: 'primary' },
   ],
-  'Tools & Pipelines': [
-    { name: 'Unity Editor (URP)', level: 'primary' },
-    { name: 'Visual Studio / VS Code', level: 'primary' },
-    { name: 'Git & GitHub', level: 'primary' },
-    { name: 'Unity Profiler', level: 'secondary' },
-    { name: 'Figma (UI Mockups)', level: 'secondary' },
-  ]
 }

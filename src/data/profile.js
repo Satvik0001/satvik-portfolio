@@ -2,11 +2,11 @@
 
 export const profile = {
   name: 'Satvik Prajapati',
-  role: 'Game Developer & UI Designer',
-  tagline: 'Crafting responsive game systems, spherical physics, stealth mechanics, and intuitive game UI.',
-  bio: `I am a passionate Game Developer and UI/UX Designer specializing in Unity and C#.
-With 6 months of professional studio internship experience at Gameyogi Ahmedabad, I have built diverse 3D & 2D game prototypes — from spherical planetary physics racers to stealth AI puzzles and physics obstacle courses.
-I combine solid software engineering principles (state machines, object pooling, physics math) with an eye for UI design and player-focused game feel.`,
+  role: 'Game Developer & Gameplay Systems Programmer',
+  tagline: 'Crafting responsive game systems, spherical physics, WebGL conversions, and 3rd-party SDK integrations.',
+  bio: `I am a passionate Game Developer and Gameplay Systems Programmer specializing in Unity and C#.
+With 6 months of professional commercial studio internship experience at Gameyogi Ahmedabad, I have built diverse 3D & 2D games, engineered complete WebGL browser conversions, and integrated industry-standard 3rd-party SDKs (Ad mediation, In-App Purchases, Firebase analytics).
+I combine solid software engineering principles (state machines, object pooling, zero-GC architecture, physics math) with cross-platform production pipelines and player-focused game feel.`,
 
   education: [
     {

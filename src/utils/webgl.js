@@ -15,10 +15,15 @@ export function detectWebGL() {
     if (gl2) {
       const renderer = gl2.getParameter(gl2.RENDERER) || ''
       const isSoftware = /swiftshader|llvmpipe|software/i.test(renderer)
+      // Check for integrated / mobile GPU indicators
+      const isIntegrated = /intel|mali|adreno|apple gpu/i.test(renderer)
+      let perf = 'high'
+      if (isSoftware) perf = 'low'
+      else if (isIntegrated) perf = 'medium'
       return {
         supported: true,
         version: 2,
-        performance: isSoftware ? 'low' : 'high',
+        performance: perf,
         renderer,
       }
     }
@@ -45,23 +50,31 @@ export function isMobileDevice() {
 }
 
 /**
- * Returns recommended quality settings based on device
+ * Returns recommended quality settings based on device.
+ * Includes particleCount for scalable particle density.
  */
 export function getQualitySettings() {
   const webgl = detectWebGL()
   const mobile = isMobileDevice()
 
   if (!webgl.supported) {
-    return { shadows: false, particles: false, postprocessing: false, dpr: 1, detail: 'none' }
+    return { shadows: false, particles: false, particleCount: 0, postprocessing: false, dpr: 1, detail: 'none' }
   }
 
   if (mobile || webgl.performance === 'low') {
-    return { shadows: false, particles: false, postprocessing: false, dpr: 1, detail: 'low' }
+    return { shadows: false, particles: false, particleCount: 0, postprocessing: false, dpr: 1, detail: 'low' }
   }
 
   if (webgl.performance === 'medium') {
-    return { shadows: true, particles: true, postprocessing: false, dpr: 1.5, detail: 'medium' }
+    return { shadows: false, particles: true, particleCount: 30, postprocessing: false, dpr: 1, detail: 'medium' }
   }
 
-  return { shadows: true, particles: true, postprocessing: false, dpr: Math.min(window.devicePixelRatio, 2), detail: 'high' }
+  return {
+    shadows: true,
+    particles: true,
+    particleCount: 60,
+    postprocessing: false,
+    dpr: Math.min(window.devicePixelRatio, 1.5),
+    detail: 'high',
+  }
 }

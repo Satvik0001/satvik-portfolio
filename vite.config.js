@@ -22,8 +22,11 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     chunkSizeWarningLimit: 1200,
+    // Target modern browsers for smaller, faster output
+    target: 'esnext',
     rollupOptions: {
       output: {
+        // Granular code-splitting for optimal caching
         manualChunks(id) {
           if (id.includes('node_modules/three')) {
             return 'three'
@@ -31,7 +34,15 @@ export default defineConfig({
           if (id.includes('node_modules/@react-three')) {
             return 'r3f'
           }
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/react-router-dom') || id.includes('node_modules/zustand') || id.includes('node_modules/gsap')) {
+          if (id.includes('node_modules/gsap')) {
+            return 'gsap'
+          }
+          if (
+            id.includes('node_modules/react') ||
+            id.includes('node_modules/react-dom') ||
+            id.includes('node_modules/react-router-dom') ||
+            id.includes('node_modules/zustand')
+          ) {
             return 'vendor'
           }
         }

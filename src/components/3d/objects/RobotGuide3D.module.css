@@ -1,0 +1,293 @@
+/* =========================================================
+   3D ROBOT GUIDE SPEECH BUBBLE & HUD STYLES
+   ========================================================= */
+
+.speechBubbleContainer {
+  pointer-events: auto;
+  user-select: none;
+  width: 190px;
+  max-width: 68vw;
+  background: rgba(10, 8, 22, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid var(--bubble-accent, #38bdf8);
+  border-radius: 10px;
+  padding: 6px 9px 5px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.65), 0 0 16px rgba(56, 189, 248, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+/* Sits on the LEFT of Byte, arrow points RIGHT towards Byte */
+.sideLeft {
+  transform: translate(-100%, -50%);
+  animation: popInBubbleLeft 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.sideLeft::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 6px solid var(--bubble-accent, #38bdf8);
+}
+
+/* Sits on the RIGHT of Byte, arrow points LEFT towards Byte */
+.sideRight {
+  transform: translate(0%, -50%);
+  animation: popInBubbleRight 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.sideRight::after {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-right: 6px solid var(--bubble-accent, #38bdf8);
+}
+
+.bubbleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+}
+
+.botBadgeGroup {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.botIconAvatar {
+  font-size: 10px;
+}
+
+.botName {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--bubble-accent, #38bdf8);
+}
+
+.stepIndicator {
+  font-family: var(--font-mono, monospace);
+  font-size: 7.5px;
+  font-weight: 700;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1px 4px;
+  border-radius: 9999px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.voiceToggleBtn,
+.closeBubbleBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-size: 7.5px;
+  font-family: var(--font-mono, monospace);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.voiceToggleBtn:hover,
+.closeBubbleBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.voiceActive {
+  color: #10b981;
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+}
+
+/* Bubble Body */
+.bubbleBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bubbleTitle {
+  font-family: var(--font-display, sans-serif);
+  font-size: 10px;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.bubbleText {
+  font-size: 8.5px;
+  line-height: 1.3;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+/* Bubble Footer Controls */
+.bubbleFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding-top: 3px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.navBtnSmall {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  font-family: var(--font-mono, monospace);
+  font-size: 8px;
+  font-weight: 600;
+  padding: 2px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.navBtnSmall:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+
+.navBtnSmall:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.nextBtnAction {
+  background: var(--bubble-accent, #38bdf8);
+  border: none;
+  color: #070512;
+  font-family: var(--font-mono, monospace);
+  font-size: 8px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.nextBtnAction:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+/* Idle click-me prompt */
+.idlePromptBadge {
+  pointer-events: auto;
+  user-select: none;
+  background: rgba(12, 9, 24, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.2px solid #a855f7;
+  border-radius: 9999px;
+  padding: 3px 8px;
+  color: #e2e8f0;
+  font-family: var(--font-mono, monospace);
+  font-size: 8px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 10px rgba(168, 85, 247, 0.35);
+  transform: translate(0%, -50%);
+  transition: all 0.2s ease;
+  animation: floatBadge 2.8s ease-in-out infinite;
+}
+
+.idlePromptBadge::after {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-right: 5px solid #a855f7;
+}
+
+.idlePromptBadge:hover {
+  transform: translate(3px, -50%) scale(1.05);
+  border-color: #38bdf8;
+  color: #ffffff;
+}
+
+.badgeWink {
+  font-size: 10px;
+}
+
+@keyframes popInBubbleLeft {
+  from {
+    opacity: 0;
+    transform: translate(-100%, -50%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-100%, -50%) scale(1);
+  }
+}
+
+@keyframes popInBubbleRight {
+  from {
+    opacity: 0;
+    transform: translate(0%, -50%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0%, -50%) scale(1);
+  }
+}
+
+@keyframes floatBadge {
+  0%, 100% {
+    transform: translate(0%, -50%);
+  }
+  50% {
+    transform: translate(0%, -54%);
+  }
+}
+
+@media (max-width: 600px) {
+  .speechBubbleContainer {
+    width: 175px;
+    padding: 5px 8px 4px;
+  }
+  .bubbleTitle {
+    font-size: 9.5px;
+  }
+  .bubbleText {
+    font-size: 8px;
+  }
+}
